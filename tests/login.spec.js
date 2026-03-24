@@ -23,13 +23,13 @@ test.describe('Login Page', () => {
   test('should show error message on invalid credentials', async () => {
     await loginPage.login('wrong@email.com', 'wrongpass');
     await expect(loginPage.errorMessage).toBeVisible();
-    await expect(loginPage.errorMessage).toContainText('Invalid email or password');
+    await expect(loginPage.errorMessage).toContainText('Invalid email/user ID or password');
   });
 
   test('should show error when only password is wrong', async () => {
     await loginPage.login('admin@example.com', 'wrongpassword');
     await expect(loginPage.errorMessage).toBeVisible();
-    await expect(loginPage.errorMessage).toContainText('Invalid email or password');
+    await expect(loginPage.errorMessage).toContainText('Invalid email/user ID or password');
   });
 
   test('should login with valid credentials and redirect to /products', async ({ page }) => {
